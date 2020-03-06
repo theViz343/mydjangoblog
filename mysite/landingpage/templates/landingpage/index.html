@@ -35,21 +35,22 @@
         <h1>Latest Posts</h1>
     </div>
 </div>
-{% if blog_list %}
-    {% for blog in blog_list %}
-            <div class="row">
-                <div class="col-sm-1"></div>
-                    <div class="col-sm-8">
-                        <div class="media border p-5 border-left-0 border-right-0">
-                            <div class="media-body">
-                                <h2>{{ blog.post_title }}</h2>
-                                <p>{{blog.post_desc}}</p>
-                            </div>
-                            <img src={{blog.post_img.url}} alt={{blog.post_title} class="ml-3 mt-3 rounded-circle" style="width:60px;">
-                        </div>
+<div class="container">
+    <div class="'card-columns">
+        {% if blog_list %}
+            {% for blog in blog_list %}
+                <div class="card">
+                    <img class="card-img-top" src={{ blog.post_img.url}} alt="placeholder">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
                     </div>
-                <div class="col-sm-3"></div>
-            </div>
+                </div>
+    </div>
+</div>
 
     {% endfor %}
 {% else %}
