@@ -14,9 +14,18 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- Sticky Footer Stuff -->
+    <link href="sticky-footer.css" rel="stylesheet">
 </head>
+
+
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+<div class="container-fluid bg-secondary text-light text-center m-0 p-1">
+        <h1>Litera</h1>
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top m-0 p-0">
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link" href="{% url 'index' %}">Home</a>
@@ -29,32 +38,59 @@
     </li>
   </ul>
 </nav>
-<div class="container-fluid bg-secondary text-light">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-8">
-        <h1>Latest Posts</h1>
-    </div>
-</div>
+
 <div class="container">
-    <div class="'card-columns">
         {% if blog_list %}
-            {% for blog in blog_list %}
-                <div class="card">
-                    <img class="card-img-top" src={{ blog.post_img.url}} alt="placeholder">
+            {% for row in blog_list %}
+                <div class="'card-deck my-3">
+                    <div class="row">
+                    <div class="col-md-1"></div>
+                {% for blog in row %}
+                        <div class="col-md-3">
+                <div class="card " style="width: 100%;">
+                    <img class="card-img-top img-responsive" src={{ blog.post_img.url}} alt={{ blog.post_title }} style="height: 20vh;">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title">{{ blog.post_title }}</h5>
+                        <p class="card-text">{{ blog.post_desc }}</p>
                         <p class="card-footer">
                             <small class="text-muted">Last updated 3 mins ago</small>
                         </p>
                     </div>
                 </div>
-    </div>
+                        </div>
+                {% endfor %}
+                      <div class="col-md-2"></div>
+                    </div>
+                </div>
+        {% endfor %}
+        {% else %}
+            <p>No blog posts are available.</p>
+        {% endif %}
 </div>
 
-    {% endfor %}
-{% else %}
-    <p>No blog posts are available.</p>
-{% endif %}
+<footer class="footer font-small bg-dark pt-4">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!--Grid row-->
+    <div class="row">
+
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright bg-secondary text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+
 </body>
 </html>

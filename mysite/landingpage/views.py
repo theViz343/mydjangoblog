@@ -5,9 +5,9 @@ from .models import BlogPost
 
 # Create your views here.
 def index(request) :
-    latest_blogs=BlogPost.objects.order_by('-post_date')[:10]
+    row_wise_blogs=BlogPost.arrange_row_wise(cards_per_row=3)
     context={
-        'blog_list':latest_blogs,
+        'blog_list':row_wise_blogs,
              }
 
     return render(request, 'landingpage/index.html', context)
