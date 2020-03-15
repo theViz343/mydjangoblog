@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -17,6 +16,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- Sticky Footer Stuff -->
     <link href="sticky-footer.css" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'landingpage/post.css' %}">
 </head>
 
 
@@ -44,16 +45,17 @@
         <div class="col-md-1"></div>
         <div class="col-md-4">
             <div class="jumbotron jumbotron-fluid bg-white p-2">
-                <h1>{{ blog.post_title }}</h1>
+                <h1 id="title">{{ blog.post_title }}</h1>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-7">
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
             <img src={{ blog.post_img.url }} alt="placeholder">
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-7">
@@ -81,7 +83,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright bg-secondary text-center py-3">© 2020 Copyright:
-    <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+    <a href="#"> Litera.com</a>
   </div>
   <!-- Copyright -->
 

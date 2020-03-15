@@ -1,0 +1,15 @@
+img {
+  width: 100%;
+}
+p{
+  font-family: "Comic Sans","Helvetica","sans-serif";
+  font-size: 1.5rem;
+  font-weight: normal;
+
+}
+#title {
+  font-family: "Comic Sans","Helvetica","sans-serif";
+  font-size: 3vw;
+  font-weight: bold;
+
+}
