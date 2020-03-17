@@ -13,10 +13,13 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'landingpage/index.css' %}">
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <ul class="navbar-nav">
+<nav class="navbar navbar-expand-sm navbar-custom  mb-1">
+    <div class="container-fluid">
+  <ul class="nav navbar-nav">
     <li class="nav-item">
       <a class="nav-link" href="{% url 'index' %}">Home</a>
     </li>
@@ -27,6 +30,14 @@
       <a class="nav-link" href="{% url 'contact' %}">Contact</a>
     </li>
   </ul>
+        <a class="navbar-brand d-flex justify-content-center" href="{% url 'index' %}" style=" padding:0;">
+           <h1 class="site-name">Litera</h1>
+        </a>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item"><a class="nav-link" href="#"> Sign Up</a></li>
+      <li class="nav-item"><a class="nav-link" href="#"> Login</a></li>
+    </ul>
+    </div>
 </nav>
 
 </body>

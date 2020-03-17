@@ -15,7 +15,6 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <!-- Sticky Footer Stuff -->
-    <link href="sticky-footer.css" rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" href="{% static 'landingpage/post.css' %}">
 </head>
@@ -23,12 +22,9 @@
 
 <body>
 
-<div class="container-fluid bg-secondary text-light text-center m-0 p-1">
-        <h1>Litera</h1>
-</div>
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top mb-1">
-  <ul class="navbar-nav">
+<nav class="navbar navbar-expand-sm navbar-custom  mb-1">
+    <div class="container-fluid">
+  <ul class="nav navbar-nav">
     <li class="nav-item">
       <a class="nav-link" href="{% url 'index' %}">Home</a>
     </li>
@@ -39,7 +35,16 @@
       <a class="nav-link" href="{% url 'contact' %}">Contact</a>
     </li>
   </ul>
+        <a class="navbar-brand d-flex justify-content-center" href="{% url 'index' %}" style=" padding:0;">
+           <h1 class="site-name">Litera</h1>
+        </a>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item"><a class="nav-link" href="#"> Sign Up</a></li>
+      <li class="nav-item"><a class="nav-link" href="#"> Login</a></li>
+    </ul>
+    </div>
 </nav>
+
 <div class =container-fluid>
     <div class="row">
         <div class="col-md-1"></div>
