@@ -15,14 +15,17 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Quicksand&display=swap" rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" href="{% static 'landingpage/index.css' %}">
+    <link rel="stylesheet" href="{% static 'landingpage/navfoot.css' %}">
 </head>
 
 
 <body>
 
-<nav class="navbar navbar-expand-sm navbar-custom  mb-1">
+<nav class="navbar navbar-expand-sm navbar-custom">
     <div class="container-fluid">
   <ul class="nav navbar-nav">
     <li class="nav-item">
@@ -35,30 +38,77 @@
       <a class="nav-link" href="{% url 'contact' %}">Contact</a>
     </li>
   </ul>
-        <a class="navbar-brand d-flex justify-content-center" href="{% url 'index' %}" style=" padding:0;">
+        <a class="navbar-brand d-flex justify-content-center" href="{% url 'index' %}">
            <h1 class="site-name">Litera</h1>
         </a>
     <ul class="nav navbar-nav navbar-right">
-      <li class="nav-item"><a class="nav-link" href="#"> Sign Up</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"> Login</a></li>
+      <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#subscribe"> Sign Up</a></li>
+      <li class="nav-item"><a class="nav-link" href="#"> Donate</a></li>
     </ul>
     </div>
 </nav>
+
+
+<div class="modal fade " id="subscribe">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Subscribe to our Newsletter</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+    <form enctype="multipart/form-data" method="post" action="/newsletter/litera/subscribe/">
+{% csrf_token %}
+    <div class="form-group">
+        <!-- <label for="id_email_field">E-mail:</label> -->
+        <input type="email" class="form-control" name="email_field" required="" id="id_email_field" placeholder="Your email address">
+    </div>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+<button id="id_submit" name="submit" class="btn btn-outline-subscribe mb-2" value="Subscribe" type="submit">Subscribe</button>
+    </form>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
 <div class="container-fluid">
     <div class ="row">
         <div class="col-md-2"></div>
             <div class="col-md-7">
-                <div class="card text-white">
-                    <img class="card-img" src={{ featured_blog.post_img.url }} alt="featured_blog.post_title" style="height: 60vh;">
-                    <div class="card-img-overlay d-flex flex-column">
-
-                        <div class="mt-auto text-center featured-blogtitle">{{ featured_blog.post_title }}</div>
-                    </div>
+                <div class="featured-blog">
+                    <a href="{% url 'post' featured_blog.post_title %}">
+                        <div class="featured-blog-overlay"></div>
+                        <img class="img-fluid featured-blog-image" src={{ featured_blog.post_img.url }} alt={{ featured_blog.post_title }}>
+                        <div class="featured-blog-details fadeIn-bottom">
+                            <h1 class="featured-blog-title">{{ featured_blog.post_title }}</h1>
+                            <p class="featured-blog-text">{{ featured_blog.post_desc }}</p>
+                        </div>
+                    </a>
                 </div>
-            </div>
+                </div>
         <div class="col-md-3"></div>
     </div>
 </div>
+
+<div class="container-fluid intermediate">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-5 section">
+            <h1>Latest posts</h1>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid">
         {% if blog_list %}
             {% for row in blog_list %}
@@ -67,7 +117,7 @@
                     <div class="col-md-1"></div>
                 {% for blog in row %}
                         <div class="col-md-3">
-                <div class="card" id="post" style="width: 100%;">
+                <div class="card" id="post">
 
                     <img class="card-img-top img-responsive img-fluid" src={{ blog.post_img.url }} alt={{ blog.post_title }} style="height: 30vh;">
 
@@ -75,8 +125,11 @@
                         <a href="{% url 'post' blog.post_title %}" class="stretched-link"></a>
                         <h5 class="card-title">{{ blog.post_title }}</h5>
                         <p class="card-text">{{ blog.post_desc }}</p>
-                        <p class="card-footer text-right pb-0">
-                            <small class="text-muted">{{ blog.get_text_timestamp }}</small>
+                        <p id="post-footer">
+                            <small>{{ blog.get_text_timestamp }}</small>
+                        </p>
+                        <p id="post-tag" style="background-color: {{ blog.get_tag_color }};">
+                            <small>{{ blog.post_tag }}</small>
                         </p>
                     </div>
                 </div>
@@ -91,28 +144,40 @@
         {% endif %}
 </div>
 
-<footer class="footer font-small bg-dark pt-4">
-
-  <!-- Footer Elements -->
-  <div class="container">
-
-    <!--Grid row-->
-    <div class="row">
-
-      <!--Grid column-->
-
+<footer class="footer">
+<div class="row">
+<div class="col-lg-3 newsletter-form">
+    <h2>Subscribe to our Newsletter</h2>
+    <form enctype="multipart/form-data" method="post" action="/newsletter/litera/subscribe/">
+{% csrf_token %}
+    <div class="form-group">
+        <!-- <label for="id_email_field">E-mail:</label> -->
+        <input type="email" class="form-control" name="email_field" required="" id="id_email_field" placeholder="Your email address">
     </div>
-    <!--Grid row-->
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
-  </div>
-  <!-- Footer Elements -->
+<button id="id_submit" name="submit" class="btn btn-outline-subscribe mb-2" value="Subscribe" type="submit">Subscribe</button>
+    </form>
+</div>
+    <div class="col-lg-1"></div>
+<div class="col-lg-4 contact-footer">
+    <h2>Contact Us</h2>
+    <p>
+        *various social media accounts buttons here*
+    </p>
 
-  <!-- Copyright -->
-  <div class="footer-copyright bg-secondary text-center py-3">© 2020 Copyright:
-    <a href="#"> Litera.com</a>
-  </div>
-  <!-- Copyright -->
-
+</div>
+<div class="col-lg-4 more-info-footer">
+    <h1 class="site-name">Litera.</h1>
+    <p>
+        Ut ac feugiat magna, vel rhoncus neque.
+        Nullam nisl elit, dapibus sed mi vel, porta faucibus libero.
+        Praesent tincidunt justo vel nunc rhoncus, eu vestibulum nisl scelerisque.
+        Aenean nec ante ex. Praesent tincidunt tincidunt sapien eget dapibus.
+        Cras efficitur condimentum neque et molestie.
+    </p>
+</div>
+</div>
 </footer>
 
 </body>

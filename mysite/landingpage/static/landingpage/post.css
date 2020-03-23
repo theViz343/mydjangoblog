@@ -1,55 +1,19 @@
 :root {
-  --color1: #26495c;
-  --color2: #e5e5dc;
-  --color3: #c66b3d;
-}
-.site-name {
- color: var(--color2);
- font-family: "Comic Sans","Helvetica","sans-serif";
- font-size: 3vw;
- font-weight: bold;
- margin-bottom: 0;
- margin-right: 10vw;
-
-}
-
-.navbar-custom {
- background-color: var(--color1);
- padding:0;
-}
-/* change the brand and text color */
-.navbar-custom .navbar-brand,
-.navbar-custom .navbar-text {
-    color: var(--color2);
-}
-.navbar-custom .navbar-brand:hover .site-name {
-    color: var(--color3);
-}
-/* change the link color */
-.navbar-custom .navbar-nav .nav-link {
-    color: var(--color2);
-    border: 0.2rem solid var(--color1);
-}
-/* change the color of active or hovered links */
-.navbar-custom .nav-item.active .nav-link,
-.navbar-custom .nav-item:hover .nav-link {
-    color: var(--color3);
-    background-color: var(--color1);
-    /*border-top: 0.2rem solid var(--color3);*/
-    border-bottom: 0.2rem solid var(--color3);
+  --color1: #26495c;/*blue*/
+  --color2: #ffffff;/*#e5e5dc;/*white*/
+  --color3: #c66b3d;/*orange*/
+  --color4: #fffff0;/*off-white*/
 }
 
 img {
   width: 100%;
 }
 p{
-  font-family: "Comic Sans","Helvetica","sans-serif";
-  font-size: 1.5rem;
-  font-weight: normal;
-
+  font-family: "Open Sans","Helvetica","sans-serif";
 }
+
 #title {
-  font-family: "Comic Sans","Helvetica","sans-serif";
+  font-family: "Quicksand","Helvetica","sans-serif";
   font-size: 3vw;
   font-weight: bold;
 

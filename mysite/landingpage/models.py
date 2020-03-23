@@ -7,7 +7,13 @@ POLITICS = "Politics"
 ENTERTAINMENT = "Entertainment"
 TECHNOLOGY = "Technology"
 BUSINESS = "Business"
-
+color={
+    GENERAL: 'gray',
+    POLITICS: 'orange',
+    ENTERTAINMENT: 'tomato',
+    TECHNOLOGY: 'dodgerblue',
+    BUSINESS: "mediumseagreen",
+       }
 tag_choices = (
     (GENERAL, "General"),
     (POLITICS, "Politics"),
@@ -24,8 +30,12 @@ class BlogPost( models.Model ) :
     post_img = models.ImageField(  null=True )
     post_tag = models.CharField( max_length=20, choices=tag_choices, default=GENERAL )
     featured = models.BooleanField(default=False)
+
     def __str__(self) :
         return self.post_title
+
+    def get_tag_color(self):
+        return color[self.post_tag]
 
     def arrange_row_wise(cards_per_row) :
         latest_blogs = BlogPost.objects.order_by( '-post_date' )[:10]
@@ -41,3 +51,6 @@ class BlogPost( models.Model ) :
         timestamp = self.post_date.strftime( "%d %b, %Y" )
         text_timestamp = "Posted on " + timestamp
         return text_timestamp
+
+    def get_from_year(year):
+        blogs_in_year=BlogPost.objects.filter(date__year=year)

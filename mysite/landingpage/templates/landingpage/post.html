@@ -14,9 +14,12 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Quicksand&display=swap" rel="stylesheet">
     <!-- Sticky Footer Stuff -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'landingpage/post.css' %}">
+    <link rel="stylesheet" href="{% static 'landingpage/navfoot.css' %}">
 </head>
 
 
@@ -40,7 +43,7 @@
         </a>
     <ul class="nav navbar-nav navbar-right">
       <li class="nav-item"><a class="nav-link" href="#"> Sign Up</a></li>
-      <li class="nav-item"><a class="nav-link" href="#"> Login</a></li>
+      <li class="nav-item"><a class="nav-link" href="#"> Help Us!</a></li>
     </ul>
     </div>
 </nav>
@@ -48,50 +51,62 @@
 <div class =container-fluid>
     <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-4">
+        <div class="col-md-10">
+                <img src={{ blog.post_img.url }} alt="placeholder">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
             <div class="jumbotron jumbotron-fluid bg-white p-2">
                 <h1 id="title">{{ blog.post_title }}</h1>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-8">
-            <img src={{ blog.post_img.url }} alt="placeholder">
-        </div>
-    </div>
-    <br>
-    <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-7">
             <p>
-            {{ blog.post_text }}
+            {{ blog.post_text|safe }}
             </p>
         </div>
     </div>
 </div>
-<footer class="footer font-small bg-dark pt-4">
-
-  <!-- Footer Elements -->
-  <div class="container">
-
-    <!--Grid row-->
-    <div class="row">
-
-      <!--Grid column-->
-
+<footer class="footer">
+<div class="row">
+<div class="col-lg-3 newsletter-form">
+    <h2>Subscribe to our Newsletter</h2>
+    <form enctype="multipart/form-data" method="post" action="/newsletter/litera/subscribe/">
+{% csrf_token %}
+    <div class="form-group">
+        <!-- <label for="id_email_field">E-mail:</label> -->
+        <input type="email" class="form-control" name="email_field" required="" id="id_email_field" placeholder="Your email address">
     </div>
-    <!--Grid row-->
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
-  </div>
-  <!-- Footer Elements -->
+<button id="id_submit" name="submit" class="btn btn-outline-subscribe mb-2" value="Subscribe" type="submit">Subscribe</button>
+    </form>
+</div>
+    <div class="col-lg-1"></div>
+<div class="col-lg-4 contact-footer">
+    <h2>Contact Us</h2>
+    <p>
+        *various social media accounts buttons here*
+    </p>
 
-  <!-- Copyright -->
-  <div class="footer-copyright bg-secondary text-center py-3">© 2020 Copyright:
-    <a href="#"> Litera.com</a>
-  </div>
-  <!-- Copyright -->
-
+</div>
+<div class="col-lg-4 more-info-footer">
+    <h1 class="site-name">Litera.</h1>
+    <p>
+        Ut ac feugiat magna, vel rhoncus neque.
+        Nullam nisl elit, dapibus sed mi vel, porta faucibus libero.
+        Praesent tincidunt justo vel nunc rhoncus, eu vestibulum nisl scelerisque.
+        Aenean nec ante ex. Praesent tincidunt tincidunt sapien eget dapibus.
+        Cras efficitur condimentum neque et molestie.
+    </p>
+</div>
+</div>
 </footer>
 
 </body>
