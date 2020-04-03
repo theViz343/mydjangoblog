@@ -1,0 +1,12 @@
+.section-header{
+background-color: var(--color4);
+font-family: "Playfair Display SC","Helvetica","sans-serif";
+color: var(--color2);
+font-weight: normal;
+font-size: 5rem;
+}
+
+.header-div{
+display: flex;
+justify-content: center;
+}

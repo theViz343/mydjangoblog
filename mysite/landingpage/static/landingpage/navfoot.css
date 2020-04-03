@@ -25,7 +25,6 @@ background-color: var(--color2);
 .navbar-custom {
  background-color: var(--color2);
  padding:0;
- margin-bottom: 2rem;
  border-top: solid grey;
  border-bottom: solid grey;
  border-weight: thin;
@@ -55,6 +54,41 @@ background-color: var(--color2);
     color: var(--color3);
     border-bottom: 0.2rem solid var(--color1);
 }
+
+
+.section-nav{
+/*color: var(--color1);*/
+    font-family: "Playfair Display SC","Helvetica","sans-serif";
+    font-size: 1.2vw;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+
+border-bottom: solid grey;
+ border-weight: thin;
+}
+
+.section-nav a{
+/*color: var(--color1);*/
+margin-left: 2rem;
+margin-right: 2rem;
+border: 0.2rem solid var(--color2);
+transition: border 0.2s;
+}
+
+.section-nav a:hover{
+color:
+border-bottom: 0.2rem solid var(--color1);
+}
+
+
+.section-nav-container{
+display: flex;
+justify-content: center;
+}
+
 
 .modal-header {
 background-color: var(--color1);
@@ -122,4 +156,51 @@ margin-top: 1rem;
 color: var(--color2);
 background-color: var(--color1);
 border-color: var(--color1);
+}
+
+
+
+
+
+#post {
+height:100%;
+width: 100%;
+border: dotted grey;
+border-width: thin;
+box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
+}
+#post:hover {
+border: dotted black;
+border-width: thin;
+}
+#post .card-title {
+font-family: "Quicksand","Helvetica","sans-serif";
+font-weight: bold;
+
+}
+
+#post:hover {
+box-shadow: 0 16px 16px 0 rgba(0,0,0,0.2);
+}
+#post-footer {
+background-color: #ffd;
+color:#888;
+position: absolute;
+bottom: 0.5rem;
+right: 1rem;
+}
+#post-tag {
+background-color: #eee;
+font-weight: bold;
+color:#000;
+position: absolute;
+bottom: 0.5rem;
+left: 1rem;
+padding: 0.2rem;
+/*border: solid #888;*/
+border-radius: 0.5rem;
+}
+
+.card-text {
+padding-bottom: 2rem;
 }

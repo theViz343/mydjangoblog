@@ -1,0 +1,8 @@
+.donate-message {
+margin: 20rem;
+margin-top: 10rem;
+padding: 5rem;
+border: dotted var(--color3);
+border-width:1px;
+background-color: var(--color4);
+}

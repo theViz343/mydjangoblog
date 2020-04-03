@@ -23,9 +23,26 @@ def post(request, post_title):
     }
     return render( request, 'landingpage/post.html', context )
 
-def about(request) :
-    return render(request,'landingpage/about.html',{})
-
+def donate(request) :
+    return render(request,'landingpage/donate.html',{})
 
 def contact(request) :
     return render(request,'landingpage/contact.html',{})
+
+def section(request,section_tag):
+    section_blogs=BlogPost.get_posts_with_tag(section_tag)
+    section_color="gray"
+    if section_tag.lower()=="politics":
+        section_color="orange"
+    elif section_tag.lower()=="entertainment":
+        section_color="tomato"
+    elif section_tag.lower()=="technology":
+        section_color="dodgerblue"
+    elif section_tag.lower()=="business":
+        section_color="mediumseagreen"
+    context={
+        'blog_list': section_blogs,
+        'title': section_tag,
+        'section_color': section_color,
+    }
+    return render( request, 'landingpage/section.html', context )
