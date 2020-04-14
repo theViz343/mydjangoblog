@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import BlogPost
+from .models import BlogPost, CustomTag
 
 # Create your views here.
 def index(request) :
@@ -46,3 +46,31 @@ def section(request,section_tag):
         'section_color': section_color,
     }
     return render( request, 'landingpage/section.html', context )
+
+def search(request):
+
+    if request.GET:
+        search_string=str(request.GET['search'])
+
+    search_query=search_string.split(' ')
+    results=[]
+    for query in search_query:
+        try:
+            query_matches = CustomTag.objects.filter(tag__iexact=query)
+            for match in query_matches:
+                results.extend( match.get_blogs() )
+        except:
+            continue
+
+    row_wise_blogs = []
+    for i in range( 0, len( results ), 3 ) :
+        if len( results ) - i >= 3 :
+            row_wise_blogs.append( results[i :i + 3] )
+        else :
+            row_wise_blogs.append( results[i : len( results )] )
+
+    context={
+        'search_string': search_string,
+        'results': row_wise_blogs,
+    }
+    return render(request,'landingpage/search.html',context)

@@ -19,8 +19,8 @@ background-color: var(--color2);
  font-size: 4vw;
  font-weight: normal;
  margin-bottom: 0;
- margin-right: 10vw;
-
+ margin-right: 0;
+ margin-left: 6vw;
 }
 .navbar-custom {
  background-color: var(--color2);
@@ -28,6 +28,9 @@ background-color: var(--color2);
  border-top: solid grey;
  border-bottom: solid grey;
  border-weight: thin;
+}
+.navbar-brand {
+ margin: 0;
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
@@ -54,6 +57,37 @@ background-color: var(--color2);
     color: var(--color3);
     border-bottom: 0.2rem solid var(--color1);
 }
+
+
+.main {
+    width: 100%;
+    margin-top: 0.4rem;
+    padding-right: 1rem;
+}
+
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #333;
+}
+.form-group{
+margin: 0;
+}
+
+
 
 
 .section-nav{

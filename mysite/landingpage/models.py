@@ -28,6 +28,8 @@ class CustomTag( models.Model ):
 
     def __str__(self):
         return self.tag
+    def get_blogs(self):
+        return self.blogpost_set.all()
 
 
 class BlogPost( models.Model ) :

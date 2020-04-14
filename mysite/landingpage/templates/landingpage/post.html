@@ -16,6 +16,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Quicksand&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Sticky Footer Stuff -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'landingpage/post.css' %}">
@@ -39,6 +40,14 @@
            <h1 class="site-name">Litera</h1>
         </a>
     <ul class="nav navbar-nav navbar-right">
+        <li>
+            <div class="main">
+          <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+            </div>
+      </li>
       <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#subscribe"> Sign Up</a></li>
       <li class="nav-item"><a class="nav-link" href="{% url 'donate' %}"> Donate</a></li>
     </ul>

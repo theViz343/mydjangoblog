@@ -6,4 +6,5 @@ urlpatterns=[
     path('posts/<post_title>',views.post,name='post'),
     path('section/<section_tag>',views.section,name='section'),
     path('donate',views.donate,name='donate'),
+    path('search',views.search,name='search'),
 ]

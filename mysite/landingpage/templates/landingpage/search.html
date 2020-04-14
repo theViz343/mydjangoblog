@@ -1,7 +1,7 @@
-<!--suppress ALL -->
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!-- Required meta tags -->
+    <meta charset="UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Latest compiled and minified CSS -->
@@ -19,11 +19,10 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Quicksand&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'landingpage/index.css' %}">
+    <link rel="stylesheet" href="{% static 'landingpage/search.css' %}">
     <link rel="stylesheet" href="{% static 'landingpage/navfoot.css' %}">
+    <link rel="stylesheet" href="{% static 'landingpage/searchbar.css' %}">
 </head>
-
-
 <body>
 
 <nav class="navbar navbar-expand-sm navbar-custom">
@@ -36,18 +35,18 @@
       <a class="nav-link" href="{% url 'contact' %}">Contact</a>
     </li>
   </ul>
-        <a class="navbar-brand d-flex justify-content-center" href="{% url 'index' %}">
+        <a class="navbar-brand" href="{% url 'index' %}">
            <h1 class="site-name">Litera</h1>
         </a>
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <form class="mt-2" action="/search">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
+            <form class="searchbar"  action="/search" method="get">
+                <input class="searchbar" type="search" name="search" placeholder="Search..">
+                <i class="fa fa-search"></i>
             </form>
-      </li>
-      <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#subscribe"> Sign Up</a></li>
-      <li class="nav-item"><a class="nav-link" href="{% url 'donate' %}"> Donate</a></li>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#subscribe"> Sign Up</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'donate' %}"> Donate</a></li>
     </ul>
     </div>
 </nav>
@@ -74,6 +73,7 @@
 </div>
     </div>
 </div>
+
 
 <div class="modal fade " id="subscribe">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -107,37 +107,23 @@
 </div>
 
 
+
 <div class="container-fluid">
     <div class ="row">
-        <div class="col-md-2"></div>
-            <div class="col-md-7">
-                <div class="featured-blog">
-                    <a href="{% url 'post' featured_blog.post_title %}">
-                        <div class="featured-blog-overlay"></div>
-                        <img class="img-fluid featured-blog-image" src={{ featured_blog.post_img.url }} alt={{ featured_blog.post_title }}>
-                        <div class="featured-blog-details fadeIn-bottom">
-                            <h1 class="featured-blog-title">{{ featured_blog.post_title }}</h1>
-                            <p class="featured-blog-text">{{ featured_blog.post_desc }}</p>
-                        </div>
-                    </a>
-                </div>
-                </div>
-        <div class="col-md-3"></div>
-    </div>
-</div>
-
-<div class="container-fluid intermediate">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-5 section">
-            <h1>Latest posts</h1>
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+            <div class="heading">
+                <h3>
+                    Showing results matching " <i class="text-muted">{{ search_string }}</i> " :
+                </h3>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="container-fluid">
-        {% if blog_list %}
-            {% for row in blog_list %}
+        {% if results %}
+            {% for row in results %}
                 <div class="'card-deck my-3">
                     <div class="row">
                     <div class="col-md-1"></div>
@@ -169,6 +155,7 @@
             <p>No blog posts are available.</p>
         {% endif %}
 </div>
+
 
 <footer class="footer">
 <div class="row">
@@ -205,6 +192,7 @@
 </div>
 </div>
 </footer>
+
 
 </body>
 </html>
