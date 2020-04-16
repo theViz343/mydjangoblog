@@ -65,11 +65,5 @@ class BlogPost( models.Model ) :
 
     def get_posts_with_tag(tag) :
         matching_blogs = BlogPost.objects.filter( post_tag=tag )
-        row_matching_blogs = []
-        cards_per_row = 3
-        for i in range( 0, len( matching_blogs ), cards_per_row ) :
-            if len( matching_blogs ) - i >= cards_per_row :
-                row_matching_blogs.append( matching_blogs[i :i + cards_per_row] )
-            else :
-                row_matching_blogs.append( matching_blogs[i : len( matching_blogs )] )
-        return row_matching_blogs
+
+        return matching_blogs
