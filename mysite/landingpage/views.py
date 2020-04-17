@@ -62,15 +62,8 @@ def search(request):
         except:
             continue
 
-    row_wise_blogs = []
-    for i in range( 0, len( results ), 3 ) :
-        if len( results ) - i >= 3 :
-            row_wise_blogs.append( results[i :i + 3] )
-        else :
-            row_wise_blogs.append( results[i : len( results )] )
-
     context={
         'search_string': search_string,
-        'results': row_wise_blogs,
+        'blog_list': results,
     }
-    return render(request,'landingpage/search.html',context)
+    return render(request,'landingpage/newsearch.html',context)

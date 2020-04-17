@@ -8,26 +8,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display+SC">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'landingpage/css/post.min.css' %}">
 </head>
 
 <body>
-    <!-- Start: Full navbar -->
-    <div class="container-fluid">
+    <!-- Start: Full Navbar -->
+    <div class="container-fluid" style="/*background-color: #000000;*/">
         <!-- Start: Navigation with Search -->
-        <nav class="navbar navbar-light navbar-expand-md shadow-sm navigation-clean-search" style="background-color: rgba(255,255,255,0);/*z-index: -1;*/opacity: 1;width: 100%;padding: 15px;padding-right: 0px;padding-left: 0px;">
-            <div class="container-fluid"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" style="width: 46px;"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon" style="width: 22px;"></span></button>
-                <div class="collapse navbar-collapse"
-                    id="navcol-1">
-                    <ul class="nav navbar-nav">
+        <nav class="navbar navbar-light navbar-expand-md shadow-sm navigation-clean-search" style="background-color: rgba(255,255,255,0);/*z-index: -1;*/opacity: 1;width: 100%;padding: 15px;padding-right: 0px;padding-left: 0px;margin: 0px;">
+            <div class="container-fluid"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" style="width: 46px;margin: 0px;margin-left: 5px;"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon" style="width: 22px;"></span></button>
+                <div
+                    class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav" style="font-family: Quicksand, sans-serif;">
                         <li class="nav-item d-flex" role="presentation"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
                         <li class="nav-item" role="presentation"></li>
                     </ul>
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ml-auto" style="font-family: Quicksand, sans-serif;">
                         <li class="nav-item" role="presentation"><a class="nav-link" href="#" data-toggle="modal" data-target="#subscribe">Sign Up</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'donate' %}">Donate</a></li>
                         <li class="nav-item" role="presentation"></li>
@@ -35,49 +38,57 @@
                     <form class="form-inline" action="/search" style="margin: 0px;margin-left: 0px;width: 323px;padding-left: 20px;">
                         <div class="form-group" style="width: 323px;"><label for="search-field"><i class="icon ion-search" style="padding: 0px;width: 25px;height: 40px;font-size: 30px;"></i></label><input class="form-control search-field" type="search" id="search-field" name="search" style="width: 182px;"></div>
                     </form>
-                </div>
             </div>
-        </nav>
-        <!-- End: Navigation with Search -->
-        <div class="row" style="position: absolute;width: 100%;top: 0;z-index: -1;">
-            <div class="col">
-                <h1 class="text-center" style="/*position: absolute;*/font-family: 'Playfair Display SC', serif;font-size: 40px;padding: 10px;padding-top: 8px;">The Pillar</h1>
-            </div>
-        </div>
-        <div class="modal fade text-center" role="dialog" id="subscribe" tabindex="-1">
-            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h3 class="modal-title text-capitalize" style="/*position: absolute;*//*left: 50%;*/">Subscribe to our newsletter</h3><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                    <div class="modal-body"></div>
-                    <form enctype="multipart/form-data" action="/newsletter/litera/subscribe/" class="form-inline d-xl-flex justify-content-xl-center" method="post" style="margin-bottom: 26px;">
-                        {% csrf_token %}
-                        <div class="form-group d-xl-flex" style="width: 440px;"><input class="form-control" type="email" name="email_field" required="" id="id_email_field" placeholder="Your Email" autofocus="" inputmode="email" style="padding: 10px;margin: 0px;margin-right: 20px;width: 396px;margin-bottom: 0px;"><small class="form-text text-muted">We won't share your email with anybody else</small></div>
-                        <div
-                            class="form-group"><button id="id_submit" name="submit" value="Subscribe" class="btn text-capitalize text-center text-white bg-dark border rounded-0 shadow-none" type="submit" style="margin-top: -23px;">Subscribe </button></div>
-                </form>
-            </div>
+    </div>
+    </nav>
+    <!-- End: Navigation with Search -->
+    <div class="row" style="position: absolute;width: 100%;top: 0;z-index: -1;">
+        <div class="col">
+            <h1 class="text-center" style="/*position: absolute;*/font-family: 'Playfair Display', serif;font-size: 40px;padding: 10px;padding-top: 8px;">The Pillar</h1>
         </div>
     </div>
-    <ul class="nav nav-justified d-sm-block d-lg-flex" style="font-family: Adamina, serif;">
-        <li class="nav-item"><a class="nav-link" href="{% url 'section' 'Politics' %}" style="color: #fca311;">Politics</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'section' 'Entertainment' %}" style="color: #d12d33;">Entertainment</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'section' 'Technology' %}" style="color: #00a0c4;">Technology</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'section' 'Business' %}" style="color: #1eb53a;">Business</a></li>
-    </ul>
+    <div class="modal fade text-center" role="dialog" tabindex="-1" id="subscribe">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h3 class="modal-title text-capitalize" style="/*position: absolute;*//*left: 50%;*/">Subscribe to our newsletter</h3><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body"></div>
+                <form class="form-inline d-xl-flex justify-content-xl-center" enctype="multipart/form-data" method="post" action="/newsletter/litera/subscribe/" style="margin-bottom: 26px;">
+                    {% csrf_token %}
+                    <div class="form-group d-xl-flex" style="width: 440px;"><input class="form-control" type="email" id="id_email_field" name="email_field" placeholder="Your Email" autofocus="" inputmode="email" required="" style="padding: 10px;margin: 0px;margin-right: 20px;width: 396px;margin-bottom: 0px;"><small class="form-text text-muted">We won't share your email with anybody else</small></div>
+                    <div
+                        class="form-group"><button id="id_submit" name="submit" class="btn text-capitalize text-center text-white bg-dark border rounded-0 shadow-none" type="submit" type="submit" value="Subscribe" style="margin-top: -23px;">Subscribe </button></div>
+            </form>
+        </div>
     </div>
+    </div>
+    <div class="row row-cols-2">
+        <div class="col" style="padding-left: 15px;padding-right: 0px;">
+            <ul class="nav nav-justified d-sm-block d-lg-flex" style="font-family: Adamina, serif;">
+                <li class="nav-item"><a class="nav-link text-center bg-light border-light shadow-sm" href="{% url 'section' 'Politics' %}" style="color: orange;font-family: Adamina, serif;">Politics</a></li>
+                <li class="nav-item shadow-sm"><a class="nav-link bg-light" href="{% url 'section' 'Entertainment' %}" style="color: tomato;">Entertainment</a></li>
+            </ul>
+        </div>
+        <div class="col" style="padding-left: 0px;padding-right: 15px;">
+            <ul class="nav nav-justified">
+                <li class="nav-item shadow-sm"><a class="nav-link bg-light" href="{% url 'section' 'Technology' %}" style="color: dodgerblue;font-family: Adamina, serif;">Technology</a></li>
+                <li class="nav-item shadow-sm"><a class="nav-link bg-light" href="{% url 'section' 'Business' %}" style="color: mediumseagreen;font-family: Adamina, serif;">Business</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    <!-- End: Full Navbar -->
     <!-- Start: Article Clean -->
-    <div class="article-clean">
-        <div class="container">
+    <div class="article-clean" style="background-color: #ffffff;">
+        <div class="container" style="background-color: rgba(255,255,255,0);">
             <div class="row">
                 <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
                     <!-- Start: Intro -->
                     <div class="intro">
-                        <h1 class="text-center">{{ blog.post_title }}</h1>
+                        <h1 class="text-center" style="font-family: Adamina, serif;">{{ blog.post_title }}</h1>
                         <!-- Start: Date and Author -->
-                        <p class="text-center"><span class="by">by</span> <a href="#">Author Name</a><span class="date">{{ blog.post_date }}</span></p>
-                        <!-- End: Date and Author -->
-                        <img class="img-fluid" src={{ blog.post_img.url }}></div>
+                        <p class="text-center"><span class="by" style="font-family: Adamina, serif;">by</span> <a href="#" style="font-family: Adamina, serif;">Author Name</a><span class="date" style="font-family: Adamina, serif;">{{ blog.post_date }}</span></p>
+                        <!-- End: Date and Author --><img class="img-fluid" src="{{ blog.post_img.url }}"></div>
                     <!-- End: Intro -->
                     <!-- Start: Text -->
                     <div class="text">
@@ -90,22 +101,22 @@
     </div>
     <!-- End: Article Clean -->
     <!-- Start: Newsletter Subscription Form -->
-                        <div class="newsletter-subscribe">
-                            <div class="container">
-                                <!-- Start: Intro -->
-                                <div class="intro">
-                                    <h2 class="text-center">Subscribe to our Newsletter</h2>
-                                    <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
-                                </div>
-                                <!-- End: Intro -->
-                                <form class="form-inline" method="post">
-                                    {% csrf_token %}
-                                    <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Your Email"></div>
-                                    <div class="form-group"><button class="btn btn-primary" type="submit">Subscribe </button></div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- End: Newsletter Subscription Form -->
+    <div class="newsletter-subscribe">
+        <div class="container">
+            <!-- Start: Intro -->
+            <div class="intro">
+                <h2 class="text-center" style="font-family: 'Open Sans', sans-serif;">Subscribe to our Newsletter</h2>
+                <p class="text-center" style="font-family: 'Open Sans', sans-serif;">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
+            </div>
+            <!-- End: Intro -->
+            <form class="form-inline" enctype="multipart/form-data" method="post" action="/newsletter/litera/subscribe/">
+                {% csrf_token %}
+                <div class="form-group"><input class="form-control" type="email" name="email_field" id="id_email_field" placeholder="Your Email" style="font-family: 'Open Sans', sans-serif;"></div>
+                <div class="form-group"><button id="id_submit" class="btn btn-primary" type="submit" value="Subscribe" style="font-family: 'Open Sans', sans-serif;">Subscribe </button></div>
+            </form>
+        </div>
+    </div>
+    <!-- End: Newsletter Subscription Form -->
     <!-- Start: Pillar Footer -->
     <div class="footer-dark">
         <footer>
@@ -149,8 +160,7 @@
     </div>
     <!-- End: Pillar Footer -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    {% load static %}
-    <script src="{% static 'landingpage/js/scriptpost.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
