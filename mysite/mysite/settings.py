@@ -10,11 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+import json
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+f = open( '../../config.json' )
+private_data = json.load( f )
 
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname( os.path.dirname( os.path.abspath( __file__ ) ) )
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -25,8 +28,7 @@ SECRET_KEY = 'r$ecu)l_6q9d@%75@*x%xfizg@5xge7#4mvi(o%&5cd=e4vzn='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.110','127.0.0.1','93ec0aff.ngrok.io']
-
+ALLOWED_HOSTS = ['192.168.0.110', '127.0.0.1', '93ec0aff.ngrok.io']
 
 # Application definition
 
@@ -58,11 +60,11 @@ ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
+        'BACKEND' : 'django.template.backends.django.DjangoTemplates',
+        'DIRS' : [],
+        'APP_DIRS' : True,
+        'OPTIONS' : {
+            'context_processors' : [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -74,39 +76,36 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'maindb',
-        'USER': 'vishwesh',
-        'PASSWORD': 'furrytail12',
-        'PORT': '5432'
+    'default' : {
+        'ENGINE' : 'django.db.backends.postgresql_psycopg2',
+        'NAME' : 'maindb',
+        'USER' : private_data['db_username'],
+        'PASSWORD' : private_data['db_passwd'],
+        'PORT' : '5432'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME' : 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME' : 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME' : 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME' : 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -121,13 +120,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join( BASE_DIR, 'media' )
 
 MEDIA_URL = '/media/'
 
@@ -135,14 +133,14 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 SUMMERNOTE_THEME = 'bs4'
 
-SITE_ID=1
+SITE_ID = 1
 
 NEWSLETTER_RICHTEXT_WIDGET = "django_summernote.widgets.SummernoteWidget"
 
-#DataFlair
+# DataFlair
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "literadjangoblog@gmail.com"
-EMAIL_HOST_PASSWORD = "furrytail12"
+EMAIL_HOST_USER = private_data['newsletter_email']
+EMAIL_HOST_PASSWORD = private_data['newsletter_email_passwd']
