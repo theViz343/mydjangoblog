@@ -80,8 +80,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'maindb',
+        'USER': 'vishwesh',
+        'PASSWORD': 'furrytail12',
+        'PORT': '5432'
     }
 }
 
@@ -132,7 +135,9 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 SUMMERNOTE_THEME = 'bs4'
 
-SITE_ID=2
+SITE_ID=1
+
+NEWSLETTER_RICHTEXT_WIDGET = "django_summernote.widgets.SummernoteWidget"
 
 #DataFlair
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
