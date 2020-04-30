@@ -13,7 +13,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import json
 import os
 
-f = open( '../../config.json' )
+dir_name = os.path.dirname( __file__ )
+path = os.path.join( dir_name, '../../config.json' )
+f = open( path )
 private_data = json.load( f )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -82,10 +84,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default' : {
         'ENGINE' : 'django.db.backends.postgresql_psycopg2',
-        'NAME' : 'maindb',
+        'NAME' : 'pillardb',
         'USER' : private_data['db_username'],
+        'HOST' : 'localhost',
         'PASSWORD' : private_data['db_passwd'],
-        'PORT' : '5432'
+
     }
 }
 
